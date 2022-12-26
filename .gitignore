@@ -1,4 +1,6 @@
-*
+# ignore everything except specific configs
+/*
 !.gitignore
-!.config/nvim/**
-!.config/kitty/**
+!/.config
+/.config/*
+!/.config/nvim
