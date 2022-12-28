@@ -5,3 +5,5 @@
 /.config/*
 !/.config/nvim
 !/.config/kitty
+!README.md
+
