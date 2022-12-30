@@ -70,6 +70,7 @@ keymap.set('n', '<leader>rs', ':LspRestart<CR>') -- mapping to restart lsp if ne
 
 -- open lazygit in lspsaga float terminal
 keymap.set('n', '<leader>git', ':FloatermNew --name=lazygit --disposable lazygit<CR>')
+keymap.set('n', '<F5>', ':FloatermNew --name=lazygit --disposable lazygit<CR>')
 -- close floaterm
 -- keymap.set('t', '<M-g>', ':FloatermKill lazygit')
 

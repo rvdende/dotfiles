@@ -114,6 +114,9 @@ return packer.startup(function(use)
     end,
   }
 
+  -- vim be good
+  use 'ThePrimeagen/vim-be-good'
+
   if packer_bootstrap then
     require('packer').sync()
   end
