@@ -44,7 +44,7 @@ keymap.set('n', '<leader>sm', ':MaximizerToggle<CR>') -- toggle split window max
 
 -- nvim-tree
 keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>') -- toggle file explorer
-
+keymap.set('n', '<F4>', ':NvimTreeToggle<CR>') -- toggle file explorer
 -- telescope
 keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>') -- find files within current working directory, respects .gitignore
 keymap.set('n', '<leader>fs', '<cmd>Telescope live_grep<cr>') -- find string in current working directory as you type
@@ -71,12 +71,14 @@ keymap.set('n', '<leader>rs', ':LspRestart<CR>') -- mapping to restart lsp if ne
 -- open lazygit in lspsaga float terminal
 keymap.set('n', '<leader>git', ':FloatermNew --name=lazygit --disposable lazygit<CR>')
 keymap.set('n', '<F5>', ':FloatermNew --name=lazygit --disposable lazygit<CR>')
+
 -- close floaterm
 -- keymap.set('t', '<M-g>', ':FloatermKill lazygit')
 
--- END LAZYGIT
 keymap.set({ 'i', 'v', 'n' }, '<C-s>', '<Esc>:wa<CR>')
 keymap.set({ 'i', 'v', 'n' }, '<M-s>', '<Esc>:wa<CR>')
+keymap.set({ 'i', 'v', 'n' }, '<F1>', '<Esc>:wa<CR>')
+keymap.set({ 'i', 'v', 'n' }, '<F12>', '<Esc>:help<CR>')
 
 keymap.set('n', 'u', ':undo<CR>') -- undo
 keymap.set('n', '<C-r>', ':redo<CR>') -- redo
