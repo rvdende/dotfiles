@@ -1,0 +1,14 @@
+[
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "enter": "project_panel::OpenPermanent",
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "unbind": {
+      "space": "project_panel::OpenPermanent"
+    }
+  }
+]
