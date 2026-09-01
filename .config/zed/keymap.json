@@ -2,13 +2,8 @@
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
+      "space": "project_panel::OpenPermanent",
       "enter": "project_panel::OpenPermanent",
-    }
+    },
   },
-  {
-    "context": "ProjectPanel && not_editing",
-    "unbind": {
-      "space": "project_panel::OpenPermanent"
-    }
-  }
 ]
