@@ -1,0 +1,130 @@
+/* Tokyo Night — palette lifted from waybar/style.css and hypr/hyprlock.conf.
+ *
+ * Keep these three in sync; they are the only place the theme is defined:
+ *   bg     rgba(20, 20, 24)   waybar window#waybar, hyprlock inner_color
+ *   fg     #d8d8e0            waybar window#waybar, hyprlock font_color
+ *   accent #7aa2f7            waybar workspaces.active, hyprlock outer_color
+ */
+
+* {
+    bg:          rgba(20, 20, 24, 92%);
+    fg:          #d8d8e0;
+    fg-dim:      #7a7a88;
+    fg-bright:   #ffffff;
+    accent:      #7aa2f7;
+    accent-soft: rgba(122, 162, 247, 18%);
+    urgent:      #f7768e;
+    hairline:    rgba(255, 255, 255, 8%);
+
+    background-color: transparent;
+    text-color:       @fg;
+    margin:           0;
+    padding:          0;
+    spacing:          0;
+}
+
+window {
+    transparency:     "real";
+    location:         center;
+    anchor:           center;
+    /* DP-3 is 3840x2160 at scale 1.0, so px here are native pixels. */
+    width:            800px;
+    border:           2px;
+    border-color:     @accent;
+    /* matches hyprland general:rounding = 10 */
+    border-radius:    10px;
+    background-color: @bg;
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    padding:      14px 16px;
+    spacing:      10px;
+    children:     [ prompt, entry ];
+    border:       0 0 1px 0;
+    border-color: @hairline;
+}
+
+prompt {
+    text-color:     @accent;
+    font:           "Ubuntu Bold 13";
+    vertical-align: 0.5;
+}
+
+entry {
+    placeholder:       "Search…";
+    placeholder-color: @fg-dim;
+    text-color:        @fg-bright;
+    vertical-align:    0.5;
+    cursor:            text;
+}
+
+listview {
+    lines:        8;
+    columns:      1;
+    scrollbar:    false;
+    fixed-height: false;
+    dynamic:      true;
+    padding:      8px;
+    spacing:      2px;
+    cursor:       default;
+}
+
+/* Transparent left bar on every row so selection doesn't shift the text by 2px.
+ * Vertical analogue of waybar's `border-bottom: 2px solid #7aa2f7` on the
+ * active workspace. */
+element {
+    padding:       9px 10px;
+    spacing:       11px;
+    border:        0 0 0 2px;
+    border-color:  transparent;
+    border-radius: 6px;
+    cursor:        pointer;
+}
+
+element normal.normal,
+element alternate.normal {
+    text-color: @fg;
+}
+
+element selected.normal {
+    background-color: @accent-soft;
+    text-color:       @fg-bright;
+    border-color:     @accent;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    text-color: @urgent;
+}
+
+element selected.urgent {
+    background-color: @urgent;
+    text-color:       #141418;
+    border-color:     @urgent;
+}
+
+element-icon {
+    size:           22px;
+    vertical-align: 0.5;
+    cursor:         inherit;
+}
+
+element-text {
+    vertical-align: 0.5;
+    cursor:         inherit;
+    text-color:     inherit;
+}
+
+message {
+    padding:      10px 16px;
+    border:       0 0 1px 0;
+    border-color: @hairline;
+}
+
+textbox {
+    text-color: @fg-dim;
+}

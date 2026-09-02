@@ -1,0 +1,24 @@
+configuration {
+    modes: "drun,run,window";
+    font:  "Ubuntu 13";
+
+    show-icons: true;
+    /* There is no ~/.config/gtk-3.0/settings.ini for rofi to inherit an icon
+     * theme from, so name it or drun entries render iconless. */
+    icon-theme: "Yaru";
+
+    drun-display-format: "{name}";
+    drun-match-fields:   "name,generic,exec,categories,keywords";
+    window-format:       "{c}   {t}";
+
+    display-drun:   "Apps";
+    display-run:    "Run";
+    display-window: "Windows";
+
+    /* Single click launches, matching every other app launcher. */
+    hover-select:    true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+}
+
+@theme "tokyonight"
