@@ -1,0 +1,94 @@
+// Waybar — Hyprland.
+//
+// The packaged /etc/xdg/waybar/config.jsonc is written for Sway: its
+// sway/workspaces and sway/window modules talk to Sway's IPC socket and render
+// nothing under Hyprland. These are the hyprland/* equivalents.
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 6,
+
+    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["mpris", "pulseaudio", "cpu", "memory", "network", "bluetooth", "tray", "clock"],
+
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "on-click": "activate"
+    },
+
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 80,
+        "separate-outputs": true
+    },
+
+    "clock": {
+        "format": "{:%a %d %b  %H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>"
+    },
+
+    "cpu": {
+        "format": "CPU {usage}%",
+        "interval": 5
+    },
+
+    "memory": {
+        "format": "RAM {percentage}%",
+        "interval": 5
+    },
+
+    "network": {
+        "format-ethernet": "ETH {bandwidthDownBits}",
+        "format-wifi": "{essid} {signalStrength}%",
+        "format-disconnected": "offline",
+        "tooltip-format": "{ifname}: {ipaddr}",
+        "interval": 5
+    },
+
+    "pulseaudio": {
+        "format": "VOL {volume}%",
+        "format-muted": "muted",
+        "on-click": "pavucontrol"
+    },
+
+    // Talks to bluez over D-Bus directly, so it needs no helper daemon — just
+    // `systemctl enable --now bluetooth`. Text labels to match the rest of the
+    // bar; {num_connections} is the count of connected devices.
+    //
+    // Battery percentage only resolves for devices that report it AND with
+    // `Experimental = true` set under [General] in /etc/bluetooth/main.conf.
+    // Without that, format-connected-battery never matches and the plain
+    // format-connected below is what you see.
+    "bluetooth": {
+        "format": "BT",
+        "format-disabled": "",
+        "format-off": "BT off",
+        "format-connected": "BT {num_connections}",
+        "format-connected-battery": "BT {device_alias} {device_battery_percentage}%",
+        "format-no-controller": "",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "kitty --title bluetoothctl -e bluetoothctl",
+        "on-click-right": "bluetoothctl power off"
+    },
+
+    // Any MPRIS player (Rhythmbox, Firefox, mpv…). Hidden when nothing is
+    // playing. ♪ rather than ▶/⏸ so no glyph depends on an icon font; the
+    // paused state is dimmed via #mpris.paused in style.css instead.
+    "mpris": {
+        "format": "♪ {title}",
+        "format-paused": "♪ {title}",
+        "max-length": 40,
+        "on-click": "play-pause",
+        "on-click-right": "next",
+        "tooltip-format": "{player}: {artist} — {title}"
+    },
+
+    "tray": {
+        "spacing": 10
+    }
+}

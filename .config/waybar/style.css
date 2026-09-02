@@ -1,0 +1,79 @@
+/* Waybar — deliberately plain. Text labels, no icon font, so nothing renders
+ * as tofu if a glyph is missing. Restyle once you know what you want on the bar. */
+
+* {
+    font-family: "Ubuntu", "DejaVu Sans", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(20, 20, 24, 0.92);
+    color: #d8d8e0;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: #7a7a88;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+}
+
+#workspaces button.active {
+    color: #ffffff;
+    border-bottom: 2px solid #7aa2f7;
+}
+
+#workspaces button:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+#window {
+    color: #a9b1d6;
+}
+
+#clock,
+#cpu,
+#memory,
+#network,
+#bluetooth,
+#pulseaudio,
+#mpris,
+#tray {
+    padding: 0 10px;
+    color: #c0caf5;
+}
+
+#clock {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#network.disconnected {
+    color: #f7768e;
+}
+
+#pulseaudio.muted {
+    color: #565f89;
+}
+
+#mpris.paused {
+    color: #565f89;
+}
+
+/* Adapter present but powered down, or soft-blocked by rfkill. The module
+ * renders empty when there is no controller at all, so nothing to style. */
+#bluetooth.off,
+#bluetooth.disabled {
+    color: #565f89;
+}
+
+#bluetooth.connected {
+    color: #9ece6a;
+}
+
+/* While `scan on` is running — pairing a controller — so the bar shows the
+ * adapter is busy rather than looking stuck. */
+#bluetooth.discovering {
+    color: #e0af68;
+}
